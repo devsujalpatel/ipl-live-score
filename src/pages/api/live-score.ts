@@ -15,25 +15,25 @@ export default async function handler(
     }
 
     const iplTeams = [
-        "Chennai Super Kings",
-        "Delhi Capitals",
-        "Mumbai Indians",
-        "Kolkata Knight Riders",
-        "Royal Challengers Bangalore",
-        "Sunrisers Hyderabad",
-        "Rajasthan Royals",
-        "Punjab Kings",
-        "Lucknow Super Giants",
-        "Gujarat Titans"
+      "Chennai Super Kings",
+      "Delhi Capitals",
+      "Mumbai Indians",
+      "Kolkata Knight Riders",
+      "Royal Challengers Bangalore",
+      "Sunrisers Hyderabad",
+      "Rajasthan Royals",
+      "Punjab Kings",
+      "Lucknow Super Giants",
+      "Gujarat Titans"
     ];
     
-   const iplMatches = data.data.filter((match:{teams : string[]}) => {
-        match.teams.some(team => iplTeams.includes(team))
-    })
+    const iplMatches = data.data.filter((match: { teams: string[] }) =>
+      match.teams.some((team) => iplTeams.includes(team))
+    );
 
-    res.status(200).json({ matches: iplMatches});
+    res.status(200).json({ matches: iplMatches });
   } catch (error) {
     console.error("Error fetching live score data:", error);
-    res.status(500).json({ error: "Failed to fetch score live" });
+    res.status(500).json({ error: "Failed to fetch live scores" });
   }
 }
